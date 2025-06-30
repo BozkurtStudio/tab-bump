@@ -69,6 +69,12 @@ app.post('/stop', (req, res) => {
 
 // İleri sarma
 app.post('/seek', async (req, res) => {
+    const url = req.body.url;
+    console.log('Gelen URL:', url); // Bu null veya boş mu?
+
+    if (!url || url === 'null') {
+        return res.send('Geçersiz URL');
+    }
     const seconds = parseInt(req.body.seconds);
     if (!currentStreamCommand) return res.send('Önce yayını başlatmalısın.');
 
