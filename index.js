@@ -12,6 +12,14 @@ const streamer = new Streamer(client);
 
 let currentStreamCommand = null;
 
+const https = require('https');
+
+https.get("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", res => {
+    console.log("Sunucuya erişildi, durum:", res.statusCode);
+}).on('error', err => {
+    console.error("Sunucuya erişilemedi:", err.message);
+});
+
 // Basit yayın kontrol paneli
 app.get('/', (req, res) => {
     res.send(`
