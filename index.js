@@ -47,7 +47,11 @@ client.on('ready', async () => {
 
     bump()
 })
-
-client.login(process.env.TOKEN).catch(err => {
-    console.error("Login sırasında hata:", err)
-})
+(async () => {
+  try {
+    await client.login(process.env.TOKEN)
+    console.log(`Logged in as ${client.user.tag}!`)
+  } catch (error) {
+    console.error("Login sırasında hata:", error)
+  }
+})()
