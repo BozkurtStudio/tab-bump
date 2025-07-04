@@ -1,3 +1,4 @@
+client.on('error', console.error)
 require('dotenv').config()
 const express = require('express')
 const { Client } = require('discord.js-selfbot-v13')
