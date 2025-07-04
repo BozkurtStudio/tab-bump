@@ -2,6 +2,10 @@ require('dotenv').config()
 const express = require('express')
 const { Client } = require('discord.js-selfbot-v13')
 const client = new Client()
+client.on('error', error => console.error('Client error:', error));
+client.on('warn', info => console.warn('Client warning:', info));
+client.on('debug', info => console.log('Client debug:', info));
+
 
 const app = express()
 app.get('/', (req, res) => res.send('Bot is running!'))
