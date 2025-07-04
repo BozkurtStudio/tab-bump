@@ -25,8 +25,9 @@ client.on('ready', async () => {
             const match = description.match(/(\d+)\s*dakika/)
             if (match) {
                 const totalMinutes = parseInt(match[1])
-                const minDelay = 30 * 60 * 1000 // 30 dakika
-                const maxDelay = totalMinutes * 60 * 1000
+                const minDelay = totalMinutes * 60 * 1000
+                const maxDelay = (totalMinutes + 30) * 60 * 1000
+
 
                 const delay = Math.floor(Math.random() * (maxDelay - minDelay)) + minDelay
                 console.log(`Disboard engeli: ${totalMinutes} dakika. Yeni bump: ${Math.round(delay / 60000)} dakika içinde.`)
