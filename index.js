@@ -1,9 +1,8 @@
-
 require('dotenv').config()
 const express = require('express')
 const { Client } = require('discord.js-selfbot-v13')
 const client = new Client()
-client.on('error', console.error)
+
 // Uptime için Express sunucusu
 const app = express()
 app.get('/', (req, res) => res.send('Bot is running!'))
@@ -49,4 +48,6 @@ client.on('ready', async () => {
     bump()
 })
 
-client.login(process.env.TOKEN)
+client.login(process.env.TOKEN).catch(err => {
+    console.error("Login sırasında hata:", err)
+})
